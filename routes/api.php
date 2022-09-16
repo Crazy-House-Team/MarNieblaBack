@@ -18,5 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/v1/', [QuestionController::class, 'index'])->name('QuestionsApi');
-//Route::delete('/deleteEvent/{id}', [EventController::class, 'destroy'])->name('destroyEventApi');
+Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi');
+Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
+Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('storeQuestionApi');
+Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('questionUpdate');
 
