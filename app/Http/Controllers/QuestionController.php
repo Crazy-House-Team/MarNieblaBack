@@ -19,27 +19,27 @@ class QuestionController extends Controller
     {
         if ($signature === "all"){
         $questions = DB::table('questions')
-                ->orderByRaw("RAND()")
+                ->orderByRaw("RANDOM()")
                 ->take(3)
                 ->get();
         }
         if ($signature === "Math"){
             $questions = DB::table('questions')
-                    ->orderByRaw("RAND()")
+                    ->orderByRaw("RANDOM()")
                     ->take(3)
                     ->where('competencies_id', '=', '1')
                     ->get();
             }
-            if ($signature === "Lengua"){
+            if ($signature === "Language"){
                 $questions = DB::table('questions')
-                        ->orderByRaw("RAND()")
+                        ->orderByRaw("RANDOM()")
                         ->take(3)
                         ->where('competencies_id', '=', '2')
                         ->get();
                 }
             if ($signature === "English"){
                 $questions = DB::table('questions')
-                        ->orderByRaw("RAND()")
+                        ->orderByRaw("RANDOM()")
                         ->take(3)
                         ->where('competencies_id', '=', '3')
                         ->get();

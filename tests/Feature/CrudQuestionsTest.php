@@ -5,9 +5,10 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Question;
 use App\Models\Competencies;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+
+
 
 class CrudQuestionsTest extends TestCase
 {
@@ -17,12 +18,7 @@ class CrudQuestionsTest extends TestCase
      * @return void
      */
     use RefreshDatabase;
-    public function test_example()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
-    }
     public function test_checkIfQuestionsAreListedInJsonFile() {
         $this->withExceptionHandling();
 
@@ -49,28 +45,81 @@ class CrudQuestionsTest extends TestCase
         ->assertSee($question->question);
 
     }
-    public function test_a_question_can_be_create() {
-        $this-> withExceptionHandling();
-        $response = $this->post(route('storeEvent'), [
-            'title' => 'new title',
-            'description' => 'new description',
-            'total_people' => '15',
-            'image' => 'new image',
-            'date' => '2008-06-23 02:11:28',
-            'start_hour'=>'10:00'
+    public function test_a_question_can_be_create()
+    {
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        $response = $this->post(route('storeQuestionApi'), [
+            'question' => 'question 1',
+            'answer_a' => 'answer 1',
+            'answer_b' => 'answer 2',
+            'answer_c' => 'answer 3',
+            'answer_d' => 'answer 4',
+            'competencies_id' => '1',
+            'right_answer' => 'a',
         ]);
-
-            $userNoAdmin = User::factory()->create(['isAdmin'=>false]);
-            $this->actingAs($userNoAdmin);
-
-            $response = $this->post(route('storeEvent'), [
-                'title' => 'new title',
-                'description' => 'new description',
-                'total_people' => '15',
-                'image' => 'new image',
-                'date' => '2008-06-23 02:11:28',
-                'start_hour'=>'10:00'
+        $this->assertCount(1, Question::all());
+    }
+    public function test_a_question_can_be_update()
+    {
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        $question=Question::factory()->create();
+        $this->assertCount(1, Question::all());
+        $response = $this->put(route('QuestionUpdate', $question->id), [
+            'question' => 'question 1',
         ]);
-        $this->assertCount(1, Event::all());
+        $this->assertCount(1, Question::all());
+        $this->assertEquals('question 1', Question::first()->question);
+    }
 
+    public function test_checkiFQuestionCanBeDeleted(){
+            $this->withExceptionHandling();
+            Competencies::factory(3)->create();
+            $this->assertCount(3, Competencies::all());
+            $questions=Question::factory(2)->create();
+            $this->assertCount(2, Question::all());
+            $question=$questions[0];
+            $response = $this->delete(route('DestroyQuestionApi', $question->id));
+            $this->assertCount(1, Question::all());
+            $response->assertStatus(200);
+    }
+    public function test_check_if_random_test_is_send() {
+            $this->withExceptionHandling();
+            Competencies::factory(3)->create();
+            $this->assertCount(3, Competencies::all());
+            Question::factory(4)->create();
+            $this->assertCount(4, Question::all());
+            $response = $this->get(route('RandomTestApi', 'all'));
+            $response->assertJsonCount(3)->assertStatus(200);
+    }
+    public function test_check_if_random_math_test_is_send() {
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        Question::factory(4)->create(['competencies_id'=>1]);
+        $this->assertCount(4, Question::all());
+        $response = $this->get(route('RandomTestMathApi', 'all'));
+        $response->assertJsonCount(3)->assertStatus(200);
+}
+public function test_check_if_random_language_test_is_send() {
+    $this->withExceptionHandling();
+    Competencies::factory(3)->create();
+    $this->assertCount(3, Competencies::all());
+    Question::factory(4)->create(['competencies_id'=>2]);
+    $this->assertCount(4, Question::all());
+    $response = $this->get(route('RandomTestLanguageApi', 'all'));
+    $response->assertJsonCount(3)->assertStatus(200);
+}
+public function test_check_if_random_english_test_is_send() {
+    $this->withExceptionHandling();
+    Competencies::factory(3)->create();
+    $this->assertCount(3, Competencies::all());
+    Question::factory(4)->create(['competencies_id'=>3]);
+    $this->assertCount(4, Question::all());
+    $response = $this->get(route('RandomTestEnglishApi', 'all'));
+    $response->assertJsonCount(3)->assertStatus(200);
+}
 }
