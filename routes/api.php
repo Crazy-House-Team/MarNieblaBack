@@ -18,8 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/v1/', [QuestionController::class, 'index'])->name('QuestionsApi');
-Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi');
-Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
+Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi')->middleware('isadmin', 'auth');;
+Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('ShowQuestionApi');
 Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('storeQuestionApi');
 Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('questionUpdate');
-
+Route::get('/v1/randomTest/{all}', [QuestionController::class, 'indexRandom'])->name('RandomTestApi');
+Route::get('/v1/randomTest/{Math}', [QuestionController::class, 'indexRandom'])->name('RandomTestMathApi');

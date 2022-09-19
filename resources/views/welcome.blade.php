@@ -556,12 +556,10 @@
                             <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
                                 Sponsor
                             </a>
-                            <input type="number" name="id">
-                            <form action="{{ route('destroyQuestionApi', [id = 1 ] )}}" method="post" class="erase-button">
+                            <form action="{{ route('destroyQuestionApi', ['id' => '3' ] )}}" method="post" class="erase-button">
 								@method('delete')
 								@csrf
 								<div class="d-flex gap-3 bd-highlight justify-content-center gap-5 m-3">
-                                    <input type="number" name="id">
 									<button type="submit" class="btn btn-danger">borrar</button>
 
 								</div>
