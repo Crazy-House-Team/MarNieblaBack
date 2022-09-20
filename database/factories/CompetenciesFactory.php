@@ -17,7 +17,8 @@ class CompetenciesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "subject"=>$this->faker->randomElement($array= array ('Matematicas','Lengua','Ingles')),
         ];
+
     }
 }
