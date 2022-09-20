@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,9 @@ Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('ShowQues
 Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('storeQuestionApi');
 Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('QuestionUpdate');
 Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('RandomTestApi');
+
+Route::get('/v1/users',[UserController::class , 'index'])->name('UserApi');
+Route::post('/v1/storeUser', [UserController::class , 'store'])->name('StoreUserApi');
+Route::get('/v1/show/{id}',[UserController::class, 'show' ])->name('showUserApi');
+Route::put('/v1/updateUser/{id}',[UserController::class, 'update'])->name('updateUserApi');
+Route::delete('/v1/deleteUser/{id}',[UserController::class, 'destroy'])->name('deleteUserApi');
