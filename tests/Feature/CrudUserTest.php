@@ -40,8 +40,32 @@ class CrudUserTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $response = $this->post(route('StoreUserApi'), ['name'=>'alumno438', 'email'=> 'alumno438@alumno438.com', 'isadmin'=> 0]);
+        $response = $this->post(route('StoreUserApi'), [
+            'name'=>'alumno438',
+            'password'=>'alumno438',
+            'email'=> 'alumno438@alumno438.com',
+            'isadmin'=> '0']);
         $this->assertCount(1 , User::all());
-        
+    }
+    public function test_a_user_can_be_update()
+    {
+        $this->withExceptionHandling();
+        $user = User::factory()->create();
+        $this->assertCount(1, User::all());
+        $response = $this->put(route('updateUserApi', $user->id), [
+            'name' => 'dani',
+        ]);
+        $this->assertCount(1, User::all());
+        $this->assertEquals('dani', User::first()->name);
+    }
+    public function test_checkiFUserCanBeDeleted()
+    {
+        $this->withExceptionHandling();
+        $users = User::factory(2)->create();
+        $this->assertCount(2, User::all());
+        $user = $users[0];
+        $response = $this->delete(route('deleteUserApi', $user->id));
+        $this->assertCount(1, User::all());
+        $response->assertStatus(200);
     }
 }

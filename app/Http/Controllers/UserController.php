@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json($users,200);
+        return response()->json($users, 200);
     }
 
     /**
@@ -48,6 +48,9 @@ class UserController extends Controller
         $user = [];
 
         $user[0]= User::find($id);
+        if ($user[0]===null){
+            return response("Este usuario no existe");
+        }
         return response()->json($user,200);
     }
 
