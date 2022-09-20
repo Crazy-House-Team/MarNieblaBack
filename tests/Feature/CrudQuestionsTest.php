@@ -6,6 +6,8 @@ use Tests\TestCase;
 use App\Models\Question;
 use App\Models\Competencies;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -76,24 +78,25 @@ class CrudQuestionsTest extends TestCase
     }
 
     public function test_checkiFQuestionCanBeDeleted(){
-            $this->withExceptionHandling();
-            Competencies::factory(3)->create();
-            $this->assertCount(3, Competencies::all());
-            $questions=Question::factory(2)->create();
-            $this->assertCount(2, Question::all());
-            $question=$questions[0];
-            $response = $this->delete(route('DestroyQuestionApi', $question->id));
-            $this->assertCount(1, Question::all());
-            $response->assertStatus(200);
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        $questions=Question::factory(2)->create();
+        $this->assertCount(2, Question::all());
+        $question=$questions[0];
+        $response = $this->delete(route('DestroyQuestionApi', $question->id));
+        $this->assertCount(1, Question::all());
+        $response->assertStatus(200);
     }
     public function test_check_if_random_test_is_send() {
-            $this->withExceptionHandling();
-            Competencies::factory(3)->create();
-            $this->assertCount(3, Competencies::all());
-            Question::factory(4)->create();
-            $this->assertCount(4, Question::all());
-            $response = $this->get(route('RandomTestApi', 'all'));
-            $response->assertJsonCount(3)->assertStatus(200);
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        Question::factory(4)->create();
+        $this->assertCount(4, Question::all());
+        $response = $this->get(route('RandomTestApi', 0));
+        $response->assertJsonCount(3)
+        ->assertStatus(200);
     }
     public function test_check_if_random_math_test_is_send() {
         $this->withExceptionHandling();
@@ -101,25 +104,17 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(3, Competencies::all());
         Question::factory(4)->create(['competencies_id'=>1]);
         $this->assertCount(4, Question::all());
-        $response = $this->get(route('RandomTestMathApi', 'all'));
+        $response = $this->get(route('RandomTestApi', 1));
         $response->assertJsonCount(3)->assertStatus(200);
-}
-public function test_check_if_random_language_test_is_send() {
-    $this->withExceptionHandling();
-    Competencies::factory(3)->create();
-    $this->assertCount(3, Competencies::all());
-    Question::factory(4)->create(['competencies_id'=>2]);
-    $this->assertCount(4, Question::all());
-    $response = $this->get(route('RandomTestLanguageApi', 'all'));
-    $response->assertJsonCount(3)->assertStatus(200);
-}
-public function test_check_if_random_english_test_is_send() {
-    $this->withExceptionHandling();
-    Competencies::factory(3)->create();
-    $this->assertCount(3, Competencies::all());
-    Question::factory(4)->create(['competencies_id'=>3]);
-    $this->assertCount(4, Question::all());
-    $response = $this->get(route('RandomTestEnglishApi', 'all'));
-    $response->assertJsonCount(3)->assertStatus(200);
-}
+    }
+    public function test_check_if_random_language_test_is_send() {
+        $this->withExceptionHandling();
+        Competencies::factory(3)->create();
+        $this->assertCount(3, Competencies::all());
+        Question::factory(4)->create(['competencies_id'=>2]);
+        $this->assertCount(4, Question::all());
+        $response = $this->get(route('RandomTestApi', 2));
+        $response->assertJsonCount(3)->assertStatus(200);
+    }
+
 }
