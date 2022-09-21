@@ -27,6 +27,6 @@ Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'index
 
 Route::get('/v1/users',[UserController::class , 'index'])->name('UserApi');
 Route::post('/v1/storeUser', [UserController::class , 'store'])->name('StoreUserApi');
-Route::get('/v1/show/{id}',[UserController::class, 'show' ])->name('showUserApi');
+Route::get('/v1/showUser/{id}',[UserController::class, 'show' ])->name('showUserApi');
 Route::put('/v1/updateUser/{id}',[UserController::class, 'update'])->name('updateUserApi');
 Route::delete('/v1/deleteUser/{id}',[UserController::class, 'destroy'])->name('deleteUserApi');
