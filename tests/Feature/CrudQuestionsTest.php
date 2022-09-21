@@ -28,7 +28,7 @@ class CrudQuestionsTest extends TestCase
         Question::factory(2)->create();
         $this->assertCount(2, Question::all());
         $this->assertCount(3, Competencies::all());
-        $response = $this->get(route('QuestionsApi'));
+        $response = $this->get(route('questionsApi'));
         $response->assertStatus(200)
         ->assertJsonCount(2);
 
@@ -41,7 +41,7 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(2, Question::all());
         $this->assertCount(3, Competencies::all());
         $question= $questions[0];
-        $response = $this->get(route('ShowQuestionApi', $question->id));
+        $response = $this->get(route('showQuestionApi', $questions[0]->id));
         $response->assertStatus(200)
         ->assertJsonCount(1)
         ->assertSee($question->question);
@@ -70,7 +70,7 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(3, Competencies::all());
         $question=Question::factory()->create();
         $this->assertCount(1, Question::all());
-        $response = $this->put(route('QuestionUpdate', $question->id), [
+        $response = $this->put(route('questionUpdate', $question->id), [
             'question' => 'question 1',
         ]);
         $this->assertCount(1, Question::all());
@@ -84,7 +84,7 @@ class CrudQuestionsTest extends TestCase
         $questions=Question::factory(2)->create();
         $this->assertCount(2, Question::all());
         $question=$questions[0];
-        $response = $this->delete(route('DestroyQuestionApi', $question->id));
+        $response = $this->delete(route('destroyQuestionApi', $question->id));
         $this->assertCount(1, Question::all());
         $response->assertStatus(200);
     }
@@ -94,7 +94,7 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(3, Competencies::all());
         Question::factory(4)->create();
         $this->assertCount(4, Question::all());
-        $response = $this->get(route('RandomTestApi', 0));
+        $response = $this->get(route('randomTestApi', 0));
         $response->assertJsonCount(3)
         ->assertStatus(200);
     }
@@ -104,7 +104,7 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(3, Competencies::all());
         Question::factory(4)->create(['competencies_id'=>1]);
         $this->assertCount(4, Question::all());
-        $response = $this->get(route('RandomTestApi', 1));
+        $response = $this->get(route('randomTestApi', 1));
         $response->assertJsonCount(3)->assertStatus(200);
     }
     public function test_check_if_random_language_test_is_send() {
@@ -113,7 +113,7 @@ class CrudQuestionsTest extends TestCase
         $this->assertCount(3, Competencies::all());
         Question::factory(4)->create(['competencies_id'=>2]);
         $this->assertCount(4, Question::all());
-        $response = $this->get(route('RandomTestApi', 2));
+        $response = $this->get(route('randomTestApi', 2));
         $response->assertJsonCount(3)->assertStatus(200);
     }
 

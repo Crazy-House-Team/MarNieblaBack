@@ -18,12 +18,13 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/v1', [QuestionController::class, 'index'])->name('QuestionsApi');
-Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('DestroyQuestionApi');
-Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('ShowQuestionApi');
+Route::get('/v1', [QuestionController::class, 'index'])->name('questionsApi');
+Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi');
+Route::get('/v1/showQuestion/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
+//Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
 Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('storeQuestionApi');
-Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('QuestionUpdate');
-Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('RandomTestApi');
+Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('questionUpdate');
+Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('randomTestApi');
 
 Route::get('/v1/users',[UserController::class , 'index'])->name('UserApi');
 Route::post('/v1/storeUser', [UserController::class , 'store'])->name('StoreUserApi');
