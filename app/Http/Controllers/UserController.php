@@ -28,10 +28,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $user = request()->except('_token');
         User::create($user);
@@ -47,11 +46,11 @@ class UserController extends Controller
     {
         $user = [];
 
-        $user[0]= User::find($id);
-        if ($user[0]===null){
+        $user[0] = User::find($id);
+        if ($user[0] === null) {
             return response("Este usuario no existe");
         }
-        return response()->json($user,200);
+        return response()->json($user, 200);
     }
 
     /**
@@ -69,10 +68,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-       $user = request()->except(['_token','method']);
-       User::where('id', '=',$id )->update($user);
+        $user = request()->except(['_token', 'method']);
+        User::where('id', '=', $id)->update($user);
     }
 
     /**
@@ -85,6 +84,5 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-
     }
 }
