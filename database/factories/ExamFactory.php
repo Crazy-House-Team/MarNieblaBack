@@ -17,7 +17,8 @@ class ExamFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => $this->faker->word,
+            "status" => $this->faker->boolean(true)
         ];
     }
 }

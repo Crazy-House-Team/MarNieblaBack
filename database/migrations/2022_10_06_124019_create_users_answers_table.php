@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_answers', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id',autoIncrement:true);
             $table->date('date');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('right_answer');
             $table->integer('id_exam');
+            $table->timestamps();
         });
     }
 

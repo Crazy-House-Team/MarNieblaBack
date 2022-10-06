@@ -21,7 +21,6 @@ class UsersAnswerFactory extends Factory
             'user_id'=> $this->faker->numberBetween($min = 1, $max = 3),
             'right_answer'=>$this->faker->numberBetween($min = 0, $max = 20),
             'id_exam'=> $this->faker->numberBetween($min = 1, $max = 10),
-
         ];
     }
 }

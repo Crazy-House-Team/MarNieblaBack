@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exams', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id',autoIncrement:true);
             $table->string('name',20);
             $table->boolean('status')->default(false);
             $table->timestamps();
