@@ -17,7 +17,9 @@ class ExamFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name(),
+            'users_id' => fake()->numberBetween(1, 100),
+            'status' => 1
         ];
     }
 }
