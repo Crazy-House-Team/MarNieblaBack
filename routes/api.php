@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
@@ -18,7 +19,16 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/v1/questions', [QuestionController::class, 'index'])->name('questionsApi');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('/v1/questions', [QuestionController::class, 'index'])->name('questionsApi');
+});
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+
 Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi');
 Route::get('/v1/showQuestion/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
 //Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
@@ -26,8 +36,8 @@ Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('st
 Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('questionUpdate');
 Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('randomTestApi');
 
-Route::get('/v1/users',[UserController::class , 'index'])->name('UserApi');
-Route::post('/v1/storeUser', [UserController::class , 'store'])->name('StoreUserApi');
-Route::get('/v1/showUser/{id}',[UserController::class, 'show' ])->name('showUserApi');
-Route::put('/v1/updateUser/{id}',[UserController::class, 'update'])->name('updateUserApi');
-Route::delete('/v1/deleteUser/{id}',[UserController::class, 'destroy'])->name('deleteUserApi');
+Route::get('/v1/users', [UserController::class, 'index'])->name('UserApi');
+Route::post('/v1/storeUser', [UserController::class, 'store'])->name('StoreUserApi');
+Route::get('/v1/showUser/{id}', [UserController::class, 'show'])->name('showUserApi');
+Route::put('/v1/updateUser/{id}', [UserController::class, 'update'])->name('updateUserApi');
+Route::delete('/v1/deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUserApi');
