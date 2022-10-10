@@ -33,7 +33,7 @@ class CrudUserTest extends TestCase
         $this->assertCount(2, User::all());
         $user = $users[0];
         $response = $this->get(route('showUserApi', $user->id));
-        $response->assertStatus(200)->assertJsonCount(1)->assertSee($user->email);
+        $response->assertStatus(200)->assertJsonCount(1)->assertSee($user->username);
     }
 
     public function test_userStore()
@@ -43,7 +43,7 @@ class CrudUserTest extends TestCase
         $response = $this->post(route('StoreUserApi'), [
             'name'=>'alumno438',
             'password'=>'alumno438',
-            'email'=> 'alumno438@alumno438.com',
+            'username'=> 'alumno438@alumno438.com',
             'isadmin'=> '0']);
         $this->assertCount(1 , User::all());
     }

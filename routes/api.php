@@ -22,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
-    Route::get('/v1/questions', [QuestionController::class, 'index'])->name('questionsApi');
 });
+Route::get('/v1/questions', [QuestionController::class, 'index'])->name('questionsApi');
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
