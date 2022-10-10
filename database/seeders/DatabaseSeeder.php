@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        User::factory()->create(['name' => 'alumno1', 'email' => 'alumno1@alumno1.com','isAdmin'=>false]);
-        User::factory()->create(['name' => 'alumno2', 'email' => 'alumno2@alumno2.com','isAdmin'=>false]);
-        User::factory()->create(['name' => 'admin', 'email' => 'admin@admin.com','isAdmin'=>true]);
+        User::factory()->create(['name' => 'alumno1', 'username' => 'alumno1','isAdmin'=>false]);
+        User::factory()->create(['name' => 'alumno2', 'username' => 'alumno2','isAdmin'=>false]);
+        User::factory()->create(['name' => 'admin', 'username' => 'admin','isAdmin'=>true]);
 
         Competencies::factory()->create(['subject'=>'Matemáticas']);
         Competencies::factory()->create(['subject'=>'Lengua']);
