@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
@@ -41,3 +42,11 @@ Route::post('/v1/storeUser', [UserController::class, 'store'])->name('StoreUserA
 Route::get('/v1/showUser/{id}', [UserController::class, 'show'])->name('showUserApi');
 Route::put('/v1/updateUser/{id}', [UserController::class, 'update'])->name('updateUserApi');
 Route::delete('/v1/deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUserApi');
+
+// Exams Routes
+Route::get('/v1/showExams',[ExamController::class, 'showExams'])->name('showExamsApi');
+Route::post('/v1/storeExam',[ExamController::class, 'storeExam'])->name('storeExamApi');
+Route::delete('v1/deleteExam/{id}',[ExamController::class, 'deleteExam'])->name('deleteExamApi');
+// showExam ID
+
+//Route::post('/v1/newExam/examId={id},competenciesId={competencies}',[ExamController::class, 'saveExam'])->name('newExamApi');
