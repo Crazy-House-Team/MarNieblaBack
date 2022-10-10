@@ -10,6 +10,7 @@ use App\Models\ExamsHasQuestion;
 use App\Models\Question;
 use App\Models\User;
 use App\Models\UsersAnswer;
+use App\Models\TemporalExam;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -117,6 +118,8 @@ class DatabaseSeeder extends Seeder
         UsersAnswer::factory()->create(["date"=>"2022-09-22","user_id"=>2,"right_answer"=>12,"id_exam"=>0]);
         UsersAnswer::factory()->create(["date"=>"2022-09-25","user_id"=>2,"right_answer"=>3,"id_exam"=>0]);
         UsersAnswer::factory()->create(["date"=>"2022-09-25","user_id"=>1,"right_answer"=>9,"id_exam"=>0]);
+
+        TemporalExam::factory()->create(["exam_id"=>1,"question_id"=>1]);
 
     }
 }
