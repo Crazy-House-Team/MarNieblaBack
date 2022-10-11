@@ -18,8 +18,8 @@ class Question extends Model
         'right_answer',
           
 	];
-	public function user()
-	{
-		return $this->belongsToMany(User::class);
+
+	public function exam(){
+		return $this->belongsToMany(Exam::class);
 	}
 }

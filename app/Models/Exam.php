@@ -12,5 +12,9 @@ class Exam extends Model
      'name',
      'status',
     ];
+
+    public function question(){
+        return $this->belongsToMany(Question::class);
+    }
        
 }

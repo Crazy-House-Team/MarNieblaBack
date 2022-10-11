@@ -3,24 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ExamsHasQuestion;
 use App\Models\Question;
 
 class ExamsHasQuestionController extends Controller
 {
-    public function saveExam($examId, $competenciesId=0){
+    public function showQuestionsInExam($exam_id){
+        $allQuestions = ExamsHasQuestion::all()->where('exam_id','=',$exam_id);
+        $questionsInExam = ExamsHasQuestionController::questions($allQuestions);
+        return response()->json($questionsInExam,200);
+    }
 
-        if($competenciesId == 0){
-            $examRandomQuestions = Question::inRandomOrder()
-            ->take(20)
-            ->get();
-        }else{
-            $examRandomQuestions = Question::inRandomOrder()
-            ->take(20)
-            ->where('competencies_id', '=', $competenciesId)
-            ->get();
+    public function questions($allQuestions){
+        $questionsInExam = [];
+        foreach($allQuestions as $question){
+            $questionsInExam[] = ExamsHasQuestionController::getQuestion($question->question_id);
         }
+        return $questionsInExam;
+    }
 
-        return response()->json($examRandomQuestions, 200);   
-        
+    public function getQuestion($id){
+        return Question::find($id);
     }
 }

@@ -70,21 +70,7 @@ class DatabaseSeeder extends Seeder
         Question::factory()->create(["question"=>"Dos ciudades A y B están separadas por una distancia de 540 km. De A sale hacia B un ciclista a 30 km/h, y justo al mismo tiempo, de B sale hacia A otro ciclista con una velocidad doble que el anterior. ¿En qué punto kilométrico (contando de A a B) se juntan?", "answer_a"=>"240", "answer_b"=>"210", "answer_c"=>"180", "answer_d"=>"150", "competencies_id"=>2, "right_answer"=>"C"]);
 
         Exam::factory()->create(["name"=>"Test 1","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 2","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 3","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 4","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 5","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 6","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 7","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 8","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 9","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 10","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 11","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 12","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 13","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 14","status"=>true]);
-        Exam::factory()->create(["name"=>"Test 15","status"=>true]);
-
+        
         ExamsHasQuestion::factory()->create(["exam_id"=>1,"question_id"=>1]);
         ExamsHasQuestion::factory()->create(["exam_id"=>1,"question_id"=>3]);
         ExamsHasQuestion::factory()->create(["exam_id"=>1,"question_id"=>5]);
