@@ -23,21 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('logout', [AuthController::class, 'logout']);
-});
+
 Route::get('/v1/questions', [QuestionController::class, 'index'])->name('questionsApi');
-
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
-
 Route::delete('/v1/deleteQuestion/{id}', [QuestionController::class, 'destroy'])->name('destroyQuestionApi');
 Route::get('/v1/showQuestion/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
 //Route::get('/v1/show/{id}', [QuestionController::class, 'show'])->name('showQuestionApi');
 Route::post('/v1/storeQuestion', [QuestionController::class, 'store'])->name('storeQuestionApi');
 Route::put('/v1/updateQuestion/{id}', [QuestionController::class, 'update'])->name('questionUpdate');
-Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('randomTestApi');
 
 Route::get('/v1/users', [UserController::class, 'index'])->name('UserApi');
 Route::post('/v1/storeUser', [UserController::class, 'store'])->name('StoreUserApi');
@@ -45,16 +37,11 @@ Route::get('/v1/showUser/{id}', [UserController::class, 'show'])->name('showUser
 Route::put('/v1/updateUser/{id}', [UserController::class, 'update'])->name('updateUserApi');
 Route::delete('/v1/deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUserApi');
 
-// Exams Routes
-Route::get('/v1/showExams',[ExamController::class, 'showExams'])->name('showExamsApi');
-Route::post('/v1/storeExam',[ExamController::class, 'storeExam'])->name('storeExamApi');
-Route::delete('v1/deleteExam/{id}',[ExamController::class, 'deleteExam'])->name('deleteExamApi');
 
-// Questions in Exam
-Route::get('v1/showQuestionsInExam/{exam_id}',[ExamsHasQuestionController::class,'showQuestionsInExam'])->name('showQuestionsInExamApi');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('logout', [AuthController::class, 'logout']);
+});
+Route::get('/v1/randomTest/{competecies_id}', [QuestionController::class, 'indexRandom'])->name('randomTestApi');
 
-
-// User Stadistics
-Route::get('v1/showUserStadistics/{user_id}',[UsersAnswerController::class,'showUserStadistics'])->name('showUserStadisticsApi');
-
-
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
