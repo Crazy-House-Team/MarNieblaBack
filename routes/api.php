@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersAnswerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -53,5 +54,7 @@ Route::delete('v1/deleteExam/{id}',[ExamController::class, 'deleteExam'])->name(
 Route::get('v1/showQuestionsInExam/{exam_id}',[ExamsHasQuestionController::class,'showQuestionsInExam'])->name('showQuestionsInExamApi');
 
 
+// User Stadistics
+Route::get('v1/showUserStadistics/{user_id}',[UsersAnswerController::class,'showUserStadistics'])->name('showUserStadisticsApi');
 
-//Route::post('/v1/newExam/examId={id},competenciesId={competencies}',[ExamController::class, 'saveExam'])->name('newExamApi');
+
