@@ -67,11 +67,11 @@ Route::put('v1/updateExam/{id}',[ExamController::class, 'updateExam'])->name('up
 
 // Questions in Exam
 Route::get('v1/showQuestionsInExam/{exam_id}', [ExamsHasQuestionController::class, 'showQuestionsInExam'])->name('showQuestionsInExamApi');
-
+Route::get('v1/checkExamIsTrue/{exam_id}', [ExamsHasQuestionController::class, 'checkExamIsTrue'])->name('checkExamIsTrueApi');
 
 // User Stadistics
 Route::get('v1/showUserStadistics/{user_id}', [UsersAnswerController::class, 'showUserStadistics'])->name('showUserStadisticsApi');
 
-//Route::post('/v1/newExam/examId={id},competenciesId={competencies}',[ExamController::class, 'saveExam'])->name('newExamApi');
+// Temporal Exam
 Route::put('/v1/activateQuestion/{id}', [TemporalExamController::class, 'activateQuestion'])->name('activateQuestion');
 Route::delete('/v1/deleteExamClass/{id}', [TemporalExamController::class, 'destroy'])->name('deleteExamClass');
