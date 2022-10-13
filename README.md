@@ -1,6 +1,6 @@
 <h1 align="center" font="blond"> Mar de Dudas Project</h1>
 
-# Description of the project Mar de Dudas
+# Description of the project 
 
 The Mar de Dudas project has been carried out to meet the needs of the Mar de Niebla Social Action Foundation, which needed an application in which teachers could offer their students knowledge control questionnaires, but they wanted to do it in a way that students could interact on each question.
 The teacher sends a question that the students receive on their pc to answer it, then the teacher corrects and explains the correct answer and the students will not be able to see the next question until the teacher sends the next question again.
@@ -28,7 +28,9 @@ The teacher sends a question that the students receive on their pc to answer it,
 </div>
 </div
 
+
 # Functional requirements
+
 
 <ul>
 <li>There are two user options:
@@ -53,7 +55,7 @@ The teacher sends a question that the students receive on their pc to answer it,
 # Design Explanation
 The app has several views with different options, a simple design has been chosen for a basic application, using the Mar de Niebla color palette and logo.
 
-<img src="./public/Images/logo_mar-de-niebla-300x156.jpeg" alt="logo" height="25">
+
 <img src="./public/Images/LogoApp.jpg" alt="logo" height="25">
 
 
@@ -106,10 +108,14 @@ Jira:
 - Board: https://quintomilenio.atlassian.net/jira/software/projects/MDN/boards/5
 - Roadmap: https://quintomilenio.atlassian.net/jira/software/projects/MDN/boards/5/roadmap
 
-Dailies:
-https://docs.google.com/document/d/1KFy8GcioTqvkMKUMzWIs_8IQkCmEZF9OzD11M5AtNoo/edit?usp=sharing
-
 </ul>
+***
+
+# Front End Installation
+
+## The instructions to proceed with the installation of the Front End will be found in the Readme found in the folder corresponding to the Front End.
+
+***
 # Back End Installation
 Enter the project directory in the terminal and execute the following command:
 ```bash
@@ -149,10 +155,7 @@ npm run dev
 </p>
 
 
-# Front End Installation
-
-## The instructions to proceed with the installation of the Front End will be found in the Readme found in the folder corresponding to the Front End.
-
+***
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
