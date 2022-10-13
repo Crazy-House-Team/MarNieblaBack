@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamsHasQuestionController;
+use App\Http\Controllers\TemporalExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
@@ -48,6 +49,7 @@ Route::delete('/v1/deleteUser/{id}', [UserController::class, 'destroy'])->name('
 Route::get('/v1/showExams',[ExamController::class, 'showExams'])->name('showExamsApi');
 Route::post('/v1/storeExam',[ExamController::class, 'storeExam'])->name('storeExamApi');
 Route::delete('v1/deleteExam/{id}',[ExamController::class, 'deleteExam'])->name('deleteExamApi');
+Route::put('v1/updateExam/{id}',[ExamController::class, 'updateExam'])->name('updateExamApi');
 
 // Questions in Exam
 Route::get('v1/showQuestionsInExam/{exam_id}',[ExamsHasQuestionController::class,'showQuestionsInExam'])->name('showQuestionsInExamApi');
@@ -55,3 +57,4 @@ Route::get('v1/showQuestionsInExam/{exam_id}',[ExamsHasQuestionController::class
 
 
 //Route::post('/v1/newExam/examId={id},competenciesId={competencies}',[ExamController::class, 'saveExam'])->name('newExamApi');
+Route::put('/v1/activateQuestion/{id}', [TemporalExamController::class, 'activateQuestion'])->name('activateQuestion');

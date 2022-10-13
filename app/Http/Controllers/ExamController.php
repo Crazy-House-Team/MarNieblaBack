@@ -16,13 +16,13 @@ class ExamController extends Controller
     public function storeExam(Request $request){
         $exam = request()->except('_token');
         $lastExam = Exam::create($exam);
-        ExamController::saveQuestions($lastExam->id); 
+        ExamController::saveQuestions($lastExam->id);
     }
 
     public function saveQuestions($exam_id){
         $examRandomQuestions = Question::inRandomOrder()
         ->take(20)
-        ->get();   
+        ->get();
 
         foreach($examRandomQuestions as $key => $value) {
             $tojunto = ["exam_id"=>$exam_id, "question_id"=>$value->id];
@@ -39,6 +39,13 @@ class ExamController extends Controller
     }
 
 
+
+    public function updateExam(Request $request, $id){
+        $exam = request()->except(['_token', '_method']);
+
+
+        Exam::where('id', '=', $id)->update($exam);
+    }
 
 
 
@@ -68,6 +75,6 @@ class ExamController extends Controller
             ->where('competencies_id', '=', $competenciesId)
             ->get();
         }
-        return response()->json($examRandomQuestions, 200);    
+        return response()->json($examRandomQuestions, 200);
     }
 }
