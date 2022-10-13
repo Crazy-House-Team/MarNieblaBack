@@ -29,7 +29,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         User::factory()->create(['name' => 'alumno1', 'username' => 'alumno1','isAdmin'=>false]);
-        User::factory()->create(['name' => 'alumno2', 'username' => 'alumno2','isAdmin'=>false]);
+        User::factory()->create(['name' => 'Hector Gonzalez', 'username' => 'hectorglez','isAdmin'=>false]);
+        User::factory()->create(['name' => 'Juan Manuel Fernznade', 'username' => 'juanmanuel','isAdmin'=>false]);
+        User::factory()->create(['name' => 'Elena Nito Del Bosque', 'username' => 'elenadiaz','isAdmin'=>false]);
+        User::factory()->create(['name' => 'Jose Antonio Gonzalez', 'username' => 'jagon','isAdmin'=>false]);
+        User::factory()->create(['name' => 'Rosa Maria Ruiz', 'username' => 'rosamaria','isAdmin'=>false]);
         User::factory()->create(['name' => 'admin', 'username' => 'admin','isAdmin'=>true]);
 
         Competencies::factory()->create(['subject'=>'Matemáticas']);
@@ -93,17 +97,17 @@ class DatabaseSeeder extends Seeder
         ExamsHasQuestion::factory()->create(["exam_id"=>1,"question_id"=>18]);
         ExamsHasQuestion::factory()->create(["exam_id"=>1,"question_id"=>20]);
         
-        UsersAnswer::factory()->create(["date"=>"2022-09-05","user_id"=>1,"right_answer"=>14,"id_exam"=>1]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-05","user_id"=>2,"right_answer"=>18,"id_exam"=>0]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-15","user_id"=>1,"right_answer"=>20,"id_exam"=>0]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-15","user_id"=>1,"right_answer"=>14,"id_exam"=>0]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-19","user_id"=>1,"right_answer"=>13,"id_exam"=>3]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-20","user_id"=>2,"right_answer"=>10,"id_exam"=>5]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-20","user_id"=>2,"right_answer"=>18,"id_exam"=>7]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-22","user_id"=>1,"right_answer"=>20,"id_exam"=>2]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-22","user_id"=>2,"right_answer"=>12,"id_exam"=>0]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-25","user_id"=>2,"right_answer"=>3,"id_exam"=>0]);
-        UsersAnswer::factory()->create(["date"=>"2022-09-25","user_id"=>1,"right_answer"=>9,"id_exam"=>0]);
+        UsersAnswer::factory()->create(["date"=>"2022-08-05","user_id"=>1,"right_answer"=>14,"id_exam"=>1]);
+        UsersAnswer::factory()->create(["date"=>"2022-08-10","user_id"=>1,"right_answer"=>18,"id_exam"=>0]);
+        UsersAnswer::factory()->create(["date"=>"2022-08-15","user_id"=>1,"right_answer"=>20,"id_exam"=>0]);
+        UsersAnswer::factory()->create(["date"=>"2022-08-20","user_id"=>1,"right_answer"=>14,"id_exam"=>1]);
+        UsersAnswer::factory()->create(["date"=>"2022-09-05","user_id"=>1,"right_answer"=>13,"id_exam"=>3]);
+        UsersAnswer::factory()->create(["date"=>"2022-09-10","user_id"=>1,"right_answer"=>10,"id_exam"=>5]);
+        UsersAnswer::factory()->create(["date"=>"2022-09-22","user_id"=>1,"right_answer"=>18,"id_exam"=>7]);
+        UsersAnswer::factory()->create(["date"=>"2022-10-02","user_id"=>1,"right_answer"=>20,"id_exam"=>2]);
+        UsersAnswer::factory()->create(["date"=>"2022-10-05","user_id"=>1,"right_answer"=>12,"id_exam"=>0]);
+        UsersAnswer::factory()->create(["date"=>"2022-10-15","user_id"=>1,"right_answer"=>3,"id_exam"=>0]);
+        UsersAnswer::factory()->create(["date"=>"2022-10-19","user_id"=>1,"right_answer"=>9,"id_exam"=>0]);
 
         TemporalExam::factory()->create(["exam_id"=>1,"question_id"=>1]);
 
