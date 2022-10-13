@@ -75,3 +75,4 @@ Route::get('v1/showUserStadistics/{user_id}', [UsersAnswerController::class, 'sh
 // Temporal Exam
 Route::put('/v1/activateQuestion/{id}', [TemporalExamController::class, 'activateQuestion'])->name('activateQuestion');
 Route::delete('/v1/deleteExamClass/{id}', [TemporalExamController::class, 'destroy'])->name('deleteExamClass');
+Route::get('/v1/activeQuestion/{id}', [TemporalExamController::class, 'activeQuestion'])->name('activeQuestion');

@@ -26,4 +26,9 @@ class TemporalExamController extends Controller
          TemporalExam::where('exam_id', '=', $exam_id)->delete();;
 
     }
+
+    public function activeQuestion($exam_id){
+        $activedQuestion=TemporalExam::all()->where('exam_id', '=', $exam_id);
+        return response()->json( $activedQuestion, 200);
+    }
 }
