@@ -21,4 +21,9 @@ class TemporalExamController extends Controller
         }if(count($examExist)>0){
         TemporalExam::where('exam_id', '=', $exam_id)->update($question);}
     }
+    public function destroy($exam_id){
+
+         TemporalExam::where('exam_id', '=', $exam_id)->delete();;
+
+    }
 }

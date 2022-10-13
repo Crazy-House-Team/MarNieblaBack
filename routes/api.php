@@ -58,3 +58,4 @@ Route::get('v1/showQuestionsInExam/{exam_id}',[ExamsHasQuestionController::class
 
 //Route::post('/v1/newExam/examId={id},competenciesId={competencies}',[ExamController::class, 'saveExam'])->name('newExamApi');
 Route::put('/v1/activateQuestion/{id}', [TemporalExamController::class, 'activateQuestion'])->name('activateQuestion');
+Route::delete('/v1/deleteExamClass/{id}', [TemporalExamController::class, 'destroy'])->name('deleteExamClass');
