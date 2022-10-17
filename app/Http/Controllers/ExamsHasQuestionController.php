@@ -36,7 +36,7 @@ class ExamsHasQuestionController extends Controller
             $questionsInExam = ExamsHasQuestionController::questions($allQuestions);
             return response()->json($questionsInExam,200);
         }else{
-            return response()->json("Sin Datos",200);        
-        }      
+            return response()->json(false,200);
+        }
     }
 }
