@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersAnswerController;
+use App\Http\Controllers\UsersInExamController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -63,7 +65,7 @@ Route::delete('/v1/deleteUser/{id}', [UserController::class, 'destroy'])->name('
 Route::get('/v1/showExams', [ExamController::class, 'showExams'])->name('showExamsApi');
 Route::post('/v1/storeExam', [ExamController::class, 'storeExam'])->name('storeExamApi');
 Route::delete('v1/deleteExam/{id}', [ExamController::class, 'deleteExam'])->name('deleteExamApi');
-Route::put('v1/updateExam/{id}',[ExamController::class, 'updateExam'])->name('updateExamApi');
+Route::put('v1/updateExam/{id}', [ExamController::class, 'updateExam'])->name('updateExamApi');
 
 // Questions in Exam
 Route::get('v1/showQuestionsInExam/{exam_id}', [ExamsHasQuestionController::class, 'showQuestionsInExam'])->name('showQuestionsInExamApi');
@@ -77,6 +79,6 @@ Route::put('/v1/activateQuestion/{id}', [TemporalExamController::class, 'activat
 Route::delete('/v1/deleteExamClass/{id}', [TemporalExamController::class, 'destroy'])->name('deleteExamClass');
 Route::get('/v1/activeQuestion/{id}', [TemporalExamController::class, 'activeQuestion'])->name('activeQuestion');
 
-
 //UsersAnswer
 Route::post('/v1/saveUserResults', [UsersAnswerController::class, 'saveUserResults'])->name('saveUserResults');
+Route::post('/v1/usersInExam', [UsersInExamController::class, 'subscribeUserToExam'])->name('subscribeUserToExam');

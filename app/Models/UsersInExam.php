@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAnswer extends Model
+class UsersInExam extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'date',
-        'user_id',
-        'right_answer' ,
-        'id_exam',
-	];
-	public function user()
-	{
-		return $this->belongsToMany(User::class);
-	}
+    protected $table = 'users_in_exam';
 
+    protected $fillable = [
+        'user_id',
+        'exam_id',
+        'question_id',
+        'is_right_answer',
+    ];
 }
