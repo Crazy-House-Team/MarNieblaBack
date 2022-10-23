@@ -7,6 +7,7 @@ use App\Http\Controllers\TemporalExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserAnswerInExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersAnswerController;
 use App\Http\Controllers\UsersInExamController;
@@ -82,3 +83,6 @@ Route::get('/v1/activeQuestion/{id}', [TemporalExamController::class, 'activeQue
 //UsersAnswer
 Route::post('/v1/saveUserResults', [UsersAnswerController::class, 'saveUserResults'])->name('saveUserResults');
 Route::post('/v1/usersInExam', [UsersInExamController::class, 'subscribeUserToExam'])->name('subscribeUserToExam');
+Route::post('/v1/userAnswerInExam', [UserAnswerInExamController::class, 'saveAnswer'])->name('saveAnswer');
+Route::get('/v1/userAnswerInExam/{id}', [UserAnswerInExamController::class, 'getAnswers'])->name('getAnswers');
+
