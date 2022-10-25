@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competencies', function (Blueprint $table) {
-            $table->unsignedInteger('id',autoIncrement:true);
-            $table->string('subject',100);
+        Schema::create('exams_has_questions', function (Blueprint $table) {
+            $table->unsignedInteger('exam_id');
+            $table->unsignedInteger('question_id');
+            $table->foreign('exam_id')->references('id')->on('exams');
+            $table->foreign('question_id')->references('id')->on('questions');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competencies');
+        Schema::dropIfExists('exams_has_questions');
     }
 };

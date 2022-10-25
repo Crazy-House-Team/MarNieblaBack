@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competencies', function (Blueprint $table) {
-            $table->unsignedInteger('id',autoIncrement:true);
-            $table->string('subject',100);
+        Schema::create('users_answers_in_exams', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('exam_id');
+            $table->unsignedInteger('question_id');
+            $table->boolean('is_right');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competencies');
+        Schema::dropIfExists('users_answers_in_exams');
     }
 };

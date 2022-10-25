@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competencies', function (Blueprint $table) {
+        Schema::create('exams', function (Blueprint $table) {
             $table->unsignedInteger('id',autoIncrement:true);
-            $table->string('subject',100);
+            $table->string('name',20);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competencies');
+        Schema::dropIfExists('exams');
     }
 };

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Competencies>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TemporalExam>
  */
-class CompetenciesFactory extends Factory
+class TemporalExamFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class CompetenciesFactory extends Factory
     public function definition()
     {
         return [
-            "subject"=>$this->faker->randomElement($array= array ('Matematicas','Lengua','Ingles')),
+            //
         ];
-
     }
 }

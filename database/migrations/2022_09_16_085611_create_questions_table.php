@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id',autoIncrement:true);
             $table->string('question',500);
             $table->string('answer_a',100);
             $table->string('answer_b',100);
             $table->string('answer_c',100);
             $table->string('answer_d',100);
-            $table->unsignedBigInteger('competencies_id');
+            $table->unsignedInteger('competencies_id');
             $table->foreign('competencies_id')->references('id')->on('competencies');
             $table->string('right_answer',1);
             $table->timestamps();   
