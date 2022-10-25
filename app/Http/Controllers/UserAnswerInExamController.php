@@ -13,8 +13,9 @@ class UserAnswerInExamController extends Controller
         return \response($request);
     }
 
-    function getAnswers($examId) {
-        $response = UserAnswerInExam::where('exam_id', $examId)->get();
+    function getAnswers($examId, $question) {
+        $response = UserAnswerInExam::where('exam_id', $examId)
+            ->where('question_id', $questionId)->get();
 
         return response()->json($response, 200);
     }

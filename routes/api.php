@@ -84,6 +84,6 @@ Route::get('/v1/activeQuestion/{id}', [TemporalExamController::class, 'activeQue
 Route::post('/v1/saveUserResults', [UsersAnswerController::class, 'saveUserResults'])->name('saveUserResults');
 Route::post('/v1/usersInExam', [UsersInExamController::class, 'subscribeUserToExam'])->name('subscribeUserToExam');
 Route::post('/v1/userAnswerInExam', [UserAnswerInExamController::class, 'saveAnswer'])->name('saveAnswer');
-Route::get('/v1/userAnswerInExam/{id}', [UserAnswerInExamController::class, 'getAnswers'])->name('getAnswers');
+Route::get('/v1/userAnswerInExam/{examId}/{questionId}', [UserAnswerInExamController::class, 'getAnswers'])->name('getAnswers');
 Route::delete('/v1/deleteAnswers/{id}', [UserAnswerInExamController::class, 'deleteAnswers'])->name('deleteAnswers');
 
