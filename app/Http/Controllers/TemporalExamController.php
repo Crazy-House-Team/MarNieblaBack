@@ -11,7 +11,7 @@ class TemporalExamController extends Controller
     public function activateQuestion(Request $request, $exam_id){
 
         $question = request()->except(['_token', '_method']);
-        $examExist=TemporalExam::all()->where('exam_id', '=', $exam_id);
+        $examExist=TemporalExam::where('exam_id', '=', $exam_id)->get();
         echo $examExist;
 
 
@@ -28,7 +28,7 @@ class TemporalExamController extends Controller
     }
 
     public function activeQuestion($exam_id){
-        $activedQuestion=TemporalExam::all()->where('exam_id', '=', $exam_id);
+        $activedQuestion=TemporalExam::where('exam_id', '=', $exam_id)->get();
         return response()->json( $activedQuestion, 200);
     }
 }

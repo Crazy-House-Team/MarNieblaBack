@@ -18,4 +18,7 @@ class UserAnswerInExamController extends Controller
 
         return response()->json($response, 200);
     }
+    function deleteAnswers($id) {
+        UserAnswerInExam::where('exam_id', '=', $id)->delete();
+}
 }
