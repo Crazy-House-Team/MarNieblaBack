@@ -17,7 +17,7 @@ class QuestionController extends Controller
     {
         if ($competencies == 0){
             $questions = Question::inRandomOrder()
-            ->take(3)
+            ->take(20)
             ->get();
             return response()->json($questions, 200);
 
@@ -25,7 +25,7 @@ class QuestionController extends Controller
 
         if ($competencies == 1){
             $questions = Question::inRandomOrder()
-            ->take(3)
+            ->take(20)
             ->where('competencies_id', '=', $competencies)
             ->get();
             return response()->json($questions, 200);
@@ -33,7 +33,7 @@ class QuestionController extends Controller
 
         if ($competencies == 2){
             $questions = Question::inRandomOrder()
-            ->take(3)
+            ->take(20)
             ->where('competencies_id', '=', $competencies)
             ->get();
             return response()->json($questions, 200);
