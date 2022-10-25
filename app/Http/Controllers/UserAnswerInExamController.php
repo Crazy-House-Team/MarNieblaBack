@@ -13,7 +13,7 @@ class UserAnswerInExamController extends Controller
         return \response($request);
     }
 
-    function getAnswers($examId, $question) {
+    function getAnswers($examId, $questionId) {
         $response = UserAnswerInExam::where('exam_id', $examId)
             ->where('question_id', $questionId)->get();
 
